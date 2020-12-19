@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="menu">
+    <ul class="menubar">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'CreateAcc' %}">Register</a></li>
+    </ul>
+</div>
+
+<!-- login content -->
+
+<div class="regcontent">
+    <div class="regformdiv">
+        
+        {% if messages %}
+            
+            {% for msg in messages %}
+                <span class=".f_size20 white">{{msg}}</span>
+            {% endfor %}
+                
+        {% endif %}
+            
+            {% if form.non_field_errors %}
+                
+                {% for er in form.non_field_errors %}
+                    <span class="error">{{er}}</span> <br>
+                {% endfor %}
+                    
+            {% endif %}
+                
+            
+        <form action="" method="post" novalidate>
+            {% csrf_token %}
+            
+            {% for frm in form %}
+                {{frm}} <span class="error">{{frm.errors|striptags}}</span> <br>
+            {% endfor %}
+                
+            <button class="regBTN" type="submit">View Admit Card</button>
+        </form>
+        <a href="{% url 'CreateAcc' %}" class="white alogin">Did't Register for Admit Card</a>
+    </div>
+</div>
+
+
+{% endblock content %}

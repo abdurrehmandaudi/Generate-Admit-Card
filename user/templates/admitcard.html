@@ -1,0 +1,30 @@
+{% extends 'home.html' %}
+
+{% block content %}
+<div class="menu">
+    <ul class="menubar">
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'logout' %}">View Another</a></li>
+    </ul>
+</div>
+
+<!-- Admit Card content -->
+<div class="wrapper">
+    <div class="admitcard">
+        <div class="AcTitle">INTEGRAL UNIVERSITY</div>
+        <span class="admitCTXT">Admit Card</span>
+        <div class="imgdiv">
+            <img src="{{data.photo.url}}" alt="">
+        </div>
+        <div class="contentuser">
+            <div class="userdetail">username  <span class="userdata">{{request.user.username}}</span> </div>
+            <div class="userdetail">Full Name  <span class="userdata">{{request.user.first_name}} {{request.user.last_name}}</span> </div>
+            <div class="userdetail">Email  <span class="userdata">{{request.user.email}}</span> </div>
+            <div class="userdetail">Roll No.  <span class="userdata">{{data.roll_no}}</span> </div>
+            <div class="userdetail">Enroll No.  <span class="userdata">{{data.enroll_no}}</span> </div>
+            <div class="userdetail">Mobile No.  <span class="userdata">{{data.mobile}}</span> </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
